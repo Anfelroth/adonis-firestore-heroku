@@ -103,10 +103,10 @@ class UserController {
           async delete({ request, response }) {
         
             const rules = {
-              id: 'required',
+              name: 'required',
             };
         
-            const data = request.only(['id']);
+            const data = request.only(['name']);
         
             const validation = await validate(request.all(), rules);
         
@@ -118,7 +118,7 @@ class UserController {
               });
             }
         
-            await userReference.doc(data.id).delete();
+            await userReference.doc(data.name).delete();
         
             return response.status(201).json({
               status: true,
